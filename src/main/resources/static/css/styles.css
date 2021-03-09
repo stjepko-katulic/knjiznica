@@ -1,0 +1,179 @@
+body {
+    background-color: #000000;
+    padding-top: 0;
+    margin: 0;
+}
+
+
+.naslovni-vanjski-container {
+    position: sticky;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: #0d0d38;
+    background-color: #32343d;
+    padding: 40px 25px 40px 25px;
+    /*position: fixed;*/
+    width: 90%;
+    margin: 0 5% 2% 5%;
+    top: 0;
+    z-index: 10;
+}
+
+#btn-search {
+    position: relative;
+    background-image: url("/img/search.png");
+    background-size: 22px 22px;
+    background-color: #32343d;
+    height: 22px;
+    width: 22px;
+    border-width: 0px;
+    bottom: 6px;
+}
+
+.table-zapis-knjige {
+    display: inline-block;
+}
+
+.black-btn {
+    background-color: #24262e;
+}
+
+.btn-nova-knjiga {
+    position: absolute;
+    left: 82%;
+}
+
+.btn-uredi-postojece {
+    position: absolute;
+    left: 90%;
+}
+
+.container-zapis-knjige {
+    position: relative;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: #3b021c;
+    background-color: #002641;
+
+    width: 90%;
+    margin: 0 8% 1% 5%;
+}
+
+.naslov-retka {
+    position: relative;
+    color: white;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.podaci-knjiga {
+    text-align: center;
+    color: yellow;
+    padding-top: 10px;
+}
+
+.counter {
+    color: white;
+    position: relative;
+}
+
+.table-with-btns {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.stupac-btn-uredi {
+    padding: 15px;
+}
+
+
+.modal-header, .modal-footer{
+    background-color: #002641;
+    color: white;
+}
+
+.modal-body {
+    background-color: #393a41;
+}
+
+#modal-novi-unos-naslov, #modal-novi-unos-isbn {
+    margin-bottom: 0;
+}
+
+.input-unos-autor, .input-unos-knjige, .input-unos-isbn, .input-unos-knjizevnost, .input-unos-ocjena {
+    width: 220px;
+    margin-bottom: 15px;
+    padding-left: 0;
+}
+
+.td-sirina {
+    width: 230px;
+}
+
+#autor-ne-postoji {
+    font-weight: bolder;
+    color: darkblue;
+}
+
+.table-sazetak-knjige {
+    position: absolute;
+    display: inline-block;
+    left: 280px;
+    top: 15px;
+}
+
+
+.mydatetimepicker-container {
+    width: 280px;
+    color: black;
+    margin-bottom: 63px;
+}
+
+
+.sadrzaj-knjige {
+    display: block;
+    resize: none;
+    height: 240px;
+    width: 280px;
+    color: black;
+}
+
+.autor-biografija {
+    display: block;
+    resize: none;
+    height: 250px;
+    width: 280px;
+    margin-bottom: 15px;
+}
+
+.table-sazetak-biografija {
+    display: inline-block;
+    position: absolute;
+    left: 280px;
+    top: 25px;
+    color: black;
+}
+
+.modal-body-autor {
+    height: 350px;
+}
+
+label {
+    color: yellow;
+}
+
+#brojac-sadrzaja {
+    color: white;
+    position: relative;
+    left:37%;
+}
+
+.alert-danger {
+    background-color: #e5383b;
+    color:white;
+    margin-bottom: 5px;
+    display: none;
+}
