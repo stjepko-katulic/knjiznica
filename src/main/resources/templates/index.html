@@ -22,7 +22,6 @@
 
 <th:block th:each="procitanaKnjiga : ${procitaneKnjige}">
     <div class="container-zapis-knjige" th:id="'zapis-knjige-' + ${procitanaKnjiga.getKnjiga().getKnjigaId()}">
-
         <span class="counter" th:text="${counter.incrementAndGet()}"></span>
 
         <table class="table-zapis-knjige">
@@ -102,6 +101,10 @@
                         </tr>
                         <tr>
                             <td class=td-sirina>
+                                <label> </label>
+                                <div class="alert alert-danger" role="alert" id="alert-naslov">
+                                    Unesite naslov!
+                                </div>
                                 <div class="input-group mb-3 input-unos-knjige">
                                     <label>Naslov</label>
                                     <input type="text" class="form-control" placeholder="Kvaka 22" aria-label="Username"
@@ -111,6 +114,7 @@
                         </tr>
                         <tr>
                             <td class=td-sirina>
+                                <label> </label>
                                 <div class="alert alert-danger" role="alert" id="alert-isbn">
                                     ISBN nije u pravilnom formatu!
                                 </div>
@@ -177,6 +181,11 @@
                     <table class="table-sazetak-knjige">
                         <tr>
                             <td>
+                                <label> </label>
+                                <div class="alert alert-danger" role="alert" id="alert-procitana">
+                                    Odaberite datum!
+                                </div>
+
                                 <label>Pročitana</label>
                                 <div class="container mydatetimepicker-container">
                                     <div class="row">

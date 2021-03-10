@@ -91,8 +91,8 @@ public class MainRepository {
     String knjigaId = jdbcTemplate.queryForObject("select knjiga_id from knjiga where isbn='" +
             isbn + "' and naslov ='" + naslovKnjige + "'", String.class);
 
-    String datum = datumProcitano.substring(6,10) + "-" + datumProcitano.substring(0,2) + "-" +
-            datumProcitano.substring(3,5);
+    String datum = datumProcitano.substring(6,10) + "-" + datumProcitano.substring(3,5) +
+            "-" + datumProcitano.substring(0,2);
 
 
 

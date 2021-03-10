@@ -7,8 +7,10 @@ window.onload = function() {
     })
 };
 
-
-
+// ovdje se samo određuje u kojem formatu će biti datum
+$("#datetimepicker").datetimepicker({
+    format : 'DD-MM-YYYY'
+});
 
 
 $(".btn-nova-knjiga").on("click", function () {
@@ -16,6 +18,10 @@ $(".btn-nova-knjiga").on("click", function () {
         backdrop: 'static',
         keyboard: false
     });
+
+    // setiranje trenutnog datuma
+    var now = new Date();
+    $("#odabir-procitana").val(now.getFullYear() + '-' + now.getMonth() + "-" + now.getDate());
 
     $('#myModal').modal('show');
 });
@@ -49,12 +55,11 @@ $("#knjiga-prihvati-promjene").on("click", function () {
     var procitana = $("#odabir-procitana").val();
     var sadrzaj = $("#odabir-sadrzaj").val().substr(0,2000);
 
-    // provjera da li je isbn unesen u pravilnom obliku
-    if (isbn.match(/^-?\d+$/)===null) {
-        $("#alert-isbn").css("display", "block");
+
+    var isSveDobroPopunjeno = provjeraIspravnostiPopunjenihPoljaKnjige(naslov, isbn, procitana);
+
+    if (!isSveDobroPopunjeno) {
         return;
-    } else {
-        $("#alert-isbn").css("display", "none");
     }
 
     var podaciOKnjizi = {
@@ -89,6 +94,42 @@ $("#knjiga-prihvati-promjene").on("click", function () {
 });
 
 
+
+function provjeraIspravnostiPopunjenihPoljaKnjige(naslov, isbn, procitana) {
+    var isSveUrednoPopunjeno = true;
+
+    // provjera da li je unesen naslov
+    if (naslov==="") {
+        $("#alert-naslov").css("display", "block");
+        isSveUrednoPopunjeno = false;
+    } else {
+        $("#alert-naslov").css("display", "none");
+    }
+
+
+    // provjera da li je isbn unesen u pravilnom obliku
+    if (isbn.match(/^-?\d+$/)===null) {
+        $("#alert-isbn").css("display", "block");
+        isSveUrednoPopunjeno = false;
+    } else {
+        $("#alert-isbn").css("display", "none");
+    }
+
+    // provjera da li je datum unesen
+    if (procitana==="") {
+        $("#alert-procitana").css("display", "block");
+        isSveUrednoPopunjeno = false;
+    } else {
+        $("#alert-procitana").css("display", "none");
+    }
+
+    return isSveUrednoPopunjeno;
+}
+
+
+
+
+
 $("#odustani-unos-knjige").on("click", function () {
     $("#odabir-naslova").val("");
     $("#odabir-isbn").val("");
@@ -99,6 +140,8 @@ $("#odustani-unos-knjige").on("click", function () {
     document.getElementById("odabir-ocjene").selectedIndex=0;
 
     $("#alert-isbn").css("display", "none");
+    $("#alert-naslov").css("display", "none");
+    $("#alert-procitana").css("display", "none");
 });
 
 
