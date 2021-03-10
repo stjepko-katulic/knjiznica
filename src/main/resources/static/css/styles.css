@@ -31,14 +31,6 @@ body {
     bottom: 6px;
 }
 
-.table-zapis-knjige {
-    display: inline-block;
-}
-
-.black-btn {
-    background-color: #24262e;
-}
-
 .btn-nova-knjiga {
     position: absolute;
     left: 82%;
@@ -49,23 +41,45 @@ body {
     left: 90%;
 }
 
+.black-btn {
+    background-color: #24262e;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
 .container-zapis-knjige {
     position: relative;
+    display: block;
     border-radius: 15px;
     border-style: solid;
     border-width: 6px;
     border-color: #3b021c;
     background-color: #002641;
-
+    padding-top: 15px;
+    padding-left: 15px;
     width: 90%;
+    height: 150px;
     margin: 0 8% 1% 5%;
+}
+
+.counter {
+    position: absolute;
+    display: inline-block;
+    color: white;
+    top: 45px;
+}
+
+.table-zapis-knjige {
+    position: absolute;
+    display: inline-block;
+    left: 100px;
 }
 
 .naslov-retka {
     position: relative;
     color: white;
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 .podaci-knjiga {
@@ -74,21 +88,19 @@ body {
     padding-top: 10px;
 }
 
-.counter {
-    color: white;
-    position: relative;
+.btn-uredi-obrisi {
+    margin-bottom: 10px;
 }
 
 .table-with-btns {
+    position: absolute;
     display: inline-block;
     text-align: center;
-    position: relative;
+    right:35px;
+    top:30px;
 }
 
-.stupac-btn-uredi {
-    padding: 15px;
-}
-
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 .modal-header, .modal-footer{
     background-color: #002641;
@@ -122,7 +134,7 @@ body {
     position: absolute;
     display: inline-block;
     left: 280px;
-    top: 15px;
+    top: 25px;
 }
 
 
@@ -176,4 +188,10 @@ label {
     color:white;
     margin-bottom: 5px;
     display: none;
+    padding: 5px;
+    width: 220px;
+}
+
+#alert-procitana {
+    width: 280px;
 }

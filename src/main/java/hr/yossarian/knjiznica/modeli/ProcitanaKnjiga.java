@@ -1,5 +1,9 @@
 package hr.yossarian.knjiznica.modeli;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +27,9 @@ public class ProcitanaKnjiga {
     return knjiga;
   }
 
-  public Date getDatumProcitana() {
-    return datumProcitana;
+  public LocalDate getDatumProcitana() {
+    return datumProcitana.toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
   }
 }

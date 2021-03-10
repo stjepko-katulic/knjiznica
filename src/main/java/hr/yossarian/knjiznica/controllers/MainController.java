@@ -59,6 +59,7 @@ public class MainController {
     mainRepository.upisUTablicuAutorKnjiga(autor, naslov, isbn, procitana);
   }
 
+
   @PostMapping("unosAutora")
   public List<Autor> unosAutora(@RequestParam("ime") String ime,
                                 @RequestParam("prezime") String prezime,
