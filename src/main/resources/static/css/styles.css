@@ -33,13 +33,8 @@ body {
 
 .btn-nova-knjiga {
     position: absolute;
-    left: 90%;
+    left: 92%;
 }
-
-/*.btn-uredi-postojece {*/
-/*    position: absolute;*/
-/*    left: 90%;*/
-/*}*/
 
 .black-btn {
     background-color: #24262e;
@@ -116,6 +111,7 @@ body {
 }
 
 .input-unos-autor, .input-unos-knjige, .input-unos-isbn, .input-unos-knjizevnost, .input-unos-ocjena {
+
     width: 220px;
     margin-bottom: 15px;
     padding-left: 0;
@@ -124,6 +120,7 @@ body {
 .td-sirina {
     width: 230px;
 }
+
 
 #autor-ne-postoji {
     font-weight: bolder;
@@ -194,4 +191,16 @@ label {
 
 #alert-procitana {
     width: 280px;
+}
+
+
+.navbar-inverse {
+    margin-bottom: 0;
+}
+.navbar {
+    border: none;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #393a41;
 }

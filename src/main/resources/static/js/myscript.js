@@ -21,8 +21,7 @@ $(".btn-nova-knjiga").on("click", function () {
 
     // setiranje trenutnog datuma
     var now = new Date();
-    $("#odabir-procitana").val(now.getFullYear() + '-' + now.getMonth() + "-" + now.getDate());
-
+    $("#odabir-procitana").val(now.getFullYear() + '-' + (now.getMonth() + 1) + "-" + now.getDate());
     $('#myModal').modal('show');
 });
 
@@ -251,8 +250,6 @@ $(".btn-uredi").on("click", function () {
             // controller metoda mi vraća objekt result (u ovom slučaju mi vraća ProcitanaKnjiga)
 
 
-
-            alert(result.knjiga.naslov);
         }
     });
 
