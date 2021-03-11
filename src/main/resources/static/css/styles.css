@@ -33,13 +33,13 @@ body {
 
 .btn-nova-knjiga {
     position: absolute;
-    left: 82%;
-}
-
-.btn-uredi-postojece {
-    position: absolute;
     left: 90%;
 }
+
+/*.btn-uredi-postojece {*/
+/*    position: absolute;*/
+/*    left: 90%;*/
+/*}*/
 
 .black-btn {
     background-color: #24262e;

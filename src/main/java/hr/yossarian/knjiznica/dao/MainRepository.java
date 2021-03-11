@@ -58,6 +58,26 @@ public class MainRepository {
   }
 
 
+  public ProcitanaKnjiga getProcitanaKnjigaById(String idKnjige) {
+    String upitKnjiga="select * from knjiznicadb.knjiga where knjiga_id=" + idKnjige;
+    Knjiga knjiga = jdbcTemplate.query(upitKnjiga, rowMapperSveProcitaneKnjige).get(0);
+
+    String upitAutor = "select * " +
+            "from autor a join autor_knjiga ak on a.autor_id = ak.id_autor " +
+            "join knjiga k on ak.id_knjiga = k.knjiga_id " +
+            "where id_knjiga = " + idKnjige;
+
+    String upitDatumCitanja = "select datum_citanja from autor_knjiga where id_knjiga="+idKnjige + " limit 1";
+    Date datumCitanja = jdbcTemplate.queryForObject(upitDatumCitanja, Date.class);
+
+    List<Autor> autori = jdbcTemplate.query(upitAutor, rowMapperAutor);
+    ProcitanaKnjiga procitanaKnjiga = new ProcitanaKnjiga(autori, knjiga, datumCitanja);
+
+    return procitanaKnjiga;
+  }
+
+
+
 
   public void upisUBazuAutora(Map<String,String> autor) {
 

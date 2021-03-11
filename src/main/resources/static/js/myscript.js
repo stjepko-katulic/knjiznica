@@ -164,7 +164,7 @@ $("#autor-prihvati-promjene").on("click", function () {
         .find('option')
         .remove();
 
-    // ovdje stvaram jedan jSon objekt koji ću proslijediti u metodu controllera
+    // ovdje stvaram objekt koji ću proslijediti u metodu controllera
     var podaciOAutoru = {
         ime : ime,
         prezime : prezime,
@@ -227,6 +227,35 @@ $("#odabir-sadrzaj").keyup(function () {
     } else {
         $("#brojac-sadrzaja").css("color", "white");
     }
+});
+
+
+$(".btn-uredi").on("click", function () {
+    $("#myModal-uredi-zapis").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
+    var podaciOKnjizi = {
+        idKnjige : $(this).attr("knjiga-id")
+    };
+
+    // slanje ajaxom na controller (na endpoint definiran parametrom "url")
+    $.ajax({
+        type: "POST",
+        url: "getKnjigaById",
+        data: podaciOKnjizi,
+
+        // nakon što se metoda u controlleru uspješno izvrši onda se poziva ova sucess funkcija
+        success: function(result) {
+            // controller metoda mi vraća objekt result (u ovom slučaju mi vraća ProcitanaKnjiga)
+
+
+
+            alert(result.knjiga.naslov);
+        }
+    });
+
 });
 
 

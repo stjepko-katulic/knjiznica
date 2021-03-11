@@ -14,7 +14,7 @@
     <input class="search" type="text">
     <button id="btn-search"></button>
     <button type="button" class="btn btn-primary btn-nova-knjiga black-btn">Unesi knjigu</button>
-    <button type="button" class="btn btn-primary btn-uredi-postojece black-btn">Uredi postojeće</button>
+<!--    <button type="button" class="btn btn-primary btn-uredi-postojece black-btn">Uredi postojeće</button>-->
 </div>
 
 
@@ -55,12 +55,15 @@
         <table class="table-with-btns">
             <tr class="redak-gumb-uredi-brisanje">
                 <td class="stupac-btn-uredi">
-                    <button type="button" class="btn btn-primary btn-uredi-obrisi black-btn">Uredi zapis</button>
+                    <button type="button" class="btn btn-primary btn-uredi-obrisi black-btn btn-uredi"
+                            th:knjiga-id="${procitanaKnjiga.getKnjiga().getKnjigaId()}"
+                    >Uredi zapis</button>
                 </td>
             </tr>
             <tr class="redak-gumb-uredi-brisanje">
                 <td>
-                    <button type="button" class="btn btn-primary btn-uredi-obrisi black-btn">Obriši zapis</button>
+                    <button type="button" class="btn btn-primary btn-uredi-obrisi black-btn btn-obrisi">
+                        Obriši zapis</button>
                 </td>
             </tr>
         </table>
@@ -284,6 +287,172 @@
 
 
 
+<!-----------------  MODAL UREDI ZAPIS  -------------------------------------------------->
+<div class="modal" tabindex="-1" role="dialog" id="myModal-uredi-zapis">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Uredi zapis</h5>
+            </div>
+            <div class="modal-body">
+                <div class="podaci-knjiga">
+                    <table>
+                        <tr>
+                            <td class="td-sirina">
+                                <div class="container input-unos-autor">
+                                    <div class="form-group">
+                                        <label>Autor</label>
+                                        <select class="form-control input-unos-knjige" id="odabir-autora-uredi">
+                                            <th:block th:each="pisac : ${sviAutori}">
+                                                <option th:text="${pisac.getPrezime()}+', '+${pisac.getIme()}"></option>
+                                            </th:block>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=td-sirina>
+                                <label> </label>
+                                <div class="alert alert-danger" role="alert" id="alert-naslov-uredi">
+                                    Unesite novi naslov!
+                                </div>
+                                <div class="input-group mb-3 input-unos-knjige">
+                                    <label>Naslov</label>
+                                    <input type="text" class="form-control" placeholder="Kvaka 22" aria-label="Username"
+                                           aria-describedby="basic-addon1" id="odabir-naslova-uredi">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=td-sirina>
+                                <label> </label>
+                                <div class="alert alert-danger" role="alert" id="alert-isbn-uredi">
+                                    ISBN nije u pravilnom formatu!
+                                </div>
+                                <div class="input-group mb-3 input-unos-isbn">
+                                    <label>ISBN</label>
+                                    <input type="text" class="form-control" placeholder="1234567891" aria-label="Username"
+                                           aria-describedby="basic-addon1" id="odabir-isbn-uredi">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-sirina">
+                                <div class="container input-unos-knjizevnost">
+                                    <div class="form-group">
+                                        <label>Književnost</label>
+                                        <select class="form-control input-unos-knjizevnosti" id="odabir-knjizevnosti-uredi">
+                                            <option>Argentina</option>
+                                            <option>Austrija</option>
+                                            <option>Australija</option>
+                                            <option>Brazil</option>
+                                            <option>Danska</option>
+                                            <option>Engleska</option>
+                                            <option>Francuska</option>
+                                            <option>Hrvatska</option>
+                                            <option>Češka</option>
+                                            <option>Italija</option>
+                                            <option>Mađarska</option>
+                                            <option>Norveška</option>
+                                            <option>Njemačka</option>
+                                            <option>Rusija</option>
+                                            <option>SAD</option>
+                                            <option>Srbija</option>
+                                            <option>Španjolska</option>
+                                            <option>Švedska</option>
+                                            <option>Poljska</option>
+                                            <option>Portugal</option>
+                                            <option>Ukrajina</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=td-sirina>
+                                <div class="input-group mb-3 input-unos-ocjena">
+                                    <label>Ocjena</label>
+                                    <select class="form-control input-unos-ocjena" id="odabir-ocjene-uredi">
+                                        <option>1.0</option>
+                                        <option>1.5</option>
+                                        <option>2.0</option>
+                                        <option>2.5</option>
+                                        <option>3.0</option>
+                                        <option>3.5</option>
+                                        <option>4.0</option>
+                                        <option>4.5</option>
+                                        <option>5.0</option>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                    <table class="table-sazetak-knjige">
+                        <tr>
+                            <td>
+                                <label> </label>
+                                <div class="alert alert-danger" role="alert" id="alert-procitana-uredi">
+                                    Odaberite datum!
+                                </div>
+
+                                <label>Pročitana</label>
+                                <div class="container mydatetimepicker-container">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="input-group date" id="datetimepicker-uredi">
+                                                <input type="text" class="form-control" id="odabir-procitana-uredi">
+                                                <div class="input-group-addon input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Sadržaj knjige</label>
+                                    <textarea class="sadrzaj-knjige" rows="2" id="odabir-sadrzaj-uredi"></textarea>
+                                </div>
+
+                                <p id="brojac-sadrzaja-uredi">0 / 2000</p>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary black-btn" id="knjiga-prihvati-promjene-uredi">
+                    Prihvati promjene</button>
+                <button type="button" class="btn btn-primary black-btn" data-dismiss="modal" id="odustani-unos-knjige-uredi">
+                    Odustani</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -292,7 +461,6 @@
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 
 <script th:src="@{js/myscript.js}"></script>
-
 
 <!---------------  DATETIMEPICKER  -------------------------------------->
 <script>

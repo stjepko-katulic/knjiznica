@@ -3,6 +3,7 @@ package hr.yossarian.knjiznica.controllers;
 import hr.yossarian.knjiznica.dao.MainRepository;
 import hr.yossarian.knjiznica.modeli.Autor;
 import hr.yossarian.knjiznica.modeli.Counter;
+import hr.yossarian.knjiznica.modeli.Knjiga;
 import hr.yossarian.knjiznica.modeli.ProcitanaKnjiga;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,7 +76,12 @@ public class MainController {
     mainRepository.upisUBazuAutora(podaciUZaAutora);
 
     return mainRepository.getSviAutori();
+  }
 
+  @PostMapping("getKnjigaById")
+  public ProcitanaKnjiga getKnjigaById(@RequestParam("idKnjige") String idKnjige) {
+    ProcitanaKnjiga procitanaKnjiga = mainRepository.getProcitanaKnjigaById(idKnjige);
+    return procitanaKnjiga;
   }
 
 
